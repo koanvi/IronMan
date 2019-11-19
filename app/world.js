@@ -15,25 +15,24 @@ class World {
   }
   FillField() {
     this.Field = new Array(10);
-    this.Field.fill(new Array(10));
-    this.Field.forEach(element => {
-      element.fill(0);
-    });
-fore    this.Field.forEach(element => {
-      element.forEach(element2 => {
-        element2 = Math.random();
-      });
-    });
+    this.Field.fill(0);
 
-
+    this.Field.forEach(function (item, i, arr) {
+      item = new Array(10);
+      item.fill(0);
+      item.forEach(function (item2, i2, arr2) {
+        arr2[i2] = Math.random();
+      }.bind(this));
+      arr[i] = item;
+    });
 
   }
   GetMaxPosition() {
-    return { x: this.Field.length, y: this.Field[0].length };
+    return { x: this.Field.length - 1, y: this.Field[0].length - 1 };
   }
   FillPersons() {
     this.Persons = [];
-    this.Persons.push(new Person({ World: this }));
+    this.Persons.push(new Person({ World: this, Position: { x: 0, y: 0 } }));
   }
   SeeTile(params) {
     return (this.Field[params.x][params.y]);

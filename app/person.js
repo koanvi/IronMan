@@ -1,18 +1,26 @@
+import Brain from "./brain.js";
 
 class Person {
   constructor(params) {
     this.World = params.World;
+
     //0 up
     //1 right
     //2 down
     //3 left
+
     this.Direction = 0;
+    if (params.Direction != null) {
+      this.Direction = params.Direction;
+    }
     this.Position = {};
     this.Position.x = 0;
     this.Position.y = 0;
-
+    if (params.Position != null) {
+      this.Position = params.Position;
+    }
     this.See = null;
-    this.Brain = null;
+    this.Brain = new Brain({ Person: this });
   }
   Move() {
     var maxPos = this.World.GetMaxPosition();
@@ -44,9 +52,9 @@ class Person {
     }
   }
   FillSee() {
-    var Position = { x: null, y: null }
-    Position.x = this.Position.x;
-    Position.y = this.Position.y;
+    var Position = { x: this.Position.x, y: this.Position.y }
+    debugger;
+
     var maxPos = this.World.GetMaxPosition();
     if (this.Direction == 0) {
       if (this.Position.y != maxPos.y) { ++Position.y; }
@@ -61,7 +69,7 @@ class Person {
       if (this.Position.x != 0) { --Position.x; }
     }
 
-
+    debugger;
     this.See = this.World.SeeTile(Position);
   }
 }
