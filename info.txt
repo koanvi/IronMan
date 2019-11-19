@@ -31,3 +31,6 @@ mute
 как инициировать пробег?
 как пробегать
 как считать вес
+
+export 
+https://stackoverflow.com/questions/41228221/can-you-export-multiple-classes-from-a-single-nodejs-module
