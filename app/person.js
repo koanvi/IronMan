@@ -3,7 +3,6 @@ import Brain from "./brain.js";
 class Person {
   constructor(params) {
     this.World = params.World;
-
     //0 up
     //1 right
     //2 down
@@ -23,6 +22,7 @@ class Person {
     this.Brain = new Brain({ Person: this });
   }
   Move() {
+    console.log("moving");
     var maxPos = this.World.GetMaxPosition();
     if (this.Direction == 0) {
       if (this.Position.y != maxPos.y) { ++this.Position.y; }
@@ -38,6 +38,7 @@ class Person {
     }
   }
   TurnLeft() {
+    console.log("TurnLeft");
     if (this.Direction == 0) {
       this.Direction = 3;
     } else {
@@ -45,6 +46,7 @@ class Person {
     }
   }
   TurnRight() {
+    console.log("TurnRight");
     if (this.Direction == 3) {
       this.Direction = 0;
     } else {
